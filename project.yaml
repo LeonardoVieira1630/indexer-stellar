@@ -1,0 +1,38 @@
+# // Auto-generated , DO NOT EDIT
+specVersion: 1.0.0
+name: soroban-testnet-starter
+version: 0.0.1
+runner:
+  node:
+    name: '@subql/node-stellar'
+    version: '*'
+  query:
+    name: '@subql/query'
+    version: '*'
+description: >-
+  This project indexes events and transactions from the Scorer Contract on Stellar Soroban testnet
+repository: 'https://github.com/subquery/stellar-subql-starter'
+schema:
+  file: ./schema.graphql
+network:
+  chainId: 'testnet'
+  endpoint: ['https://soroban-testnet.stellar.org']
+  dictionary: 'https://gx.api.subquery.network/sq/subquery/soroban-testnet-dictionary'
+dataSources:
+  - kind: soroban/Runtime
+    startBlock: 1 # Você pode ajustar o bloco inicial se souber quando o contrato foi deployado
+    mapping:
+      file: ./dist/index.js
+      handlers:
+        - handler: handleEvent
+          kind: soroban/EventHandler
+          filter:
+            contract: 'CBZKVQ6OOBPUOR5D35OBY5EVM4AMDZOS2NQHD3NGJRCZHARUM3U6XI5E'
+            topics:
+              - user.*
+              - upgrade.*
+              - "AAAADgAAAAZzY29yZXIAAA=="
+              - "AAAADwAAAAZjcmVhdGUAAA=="
+              - "manager"
+              - "add"
+

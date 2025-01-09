@@ -26,8 +26,7 @@ package-lock.json
 # Generated files
 target/
 dist/
-src/types
-project.yaml
+
 
 # JetBrains IDE
 .idea/
